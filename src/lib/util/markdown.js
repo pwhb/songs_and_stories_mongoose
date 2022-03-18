@@ -1,9 +1,9 @@
-
+import path from "path"
 import fs from "fs"
 import { marked } from "marked"
 
-// const STORIES_DIR = "stories"
-const STORIES_DIR = "./static/stories"
+const STORIES_DIR = path.join(process.cwd(), "static/stories") 
+// const STORIES_DIR = "./static/stories"
 
 
 
