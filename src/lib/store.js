@@ -7,3 +7,5 @@ export const showSearch = writable(false)
 export const showSearchBar = writable(false)
 
 export const searchTerm = writable("")
+
+export const stories = writable([])
