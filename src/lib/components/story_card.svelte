@@ -3,7 +3,7 @@
 	import { formatDate } from '$lib/util/helper';
 	import { zawgyi } from '$lib/store';
 	export let story;
-	const { title, slug, content, date, tags, audio, coverImage } = story;
+	const { title, slug, content, date, tags, audio, imageSrc } = story;
 	const preview = content.slice(0, 255) + ' ...';
 </script>
 
@@ -11,7 +11,7 @@
 	<figure>
 		<img
 			class="h-96 bg-slate-200"
-			src={coverImage ? coverImage.url : '/svg/undraw_reading_time.svg'}
+			src={imageSrc ? imageSrc : '/svg/undraw_reading_time.svg'}
 			alt="Album"
 		/>
 	</figure>

@@ -8,9 +8,7 @@ const STORY_FRAGMENT = gql`
     date
     tags
     audio
-    coverImage {
-      url
-    }
+    imageSrc
   }
 `
 

@@ -6,7 +6,7 @@
 	import AudioPlayer from './audio_player.svelte';
 
 	export let story;
-	const { title, content, date, audio, coverImage } = story;
+	const { title, content, date, audio, imageSrc } = story;
 	const body = marked(content).replace(/\n/g, '<br>');
 </script>
 
@@ -21,8 +21,8 @@
 			{formatDate(date)}
 		</div>
 	</div>
-	{#if coverImage}
-		<img class="mb-10" src={coverImage.url} alt={`${coverImage.url}`} />
+	{#if imageSrc}
+		<img class="mb-10" src={imageSrc} alt={`image for ${title}`} />
 	{/if}
 
 	{#if audio}
