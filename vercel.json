@@ -1,7 +1,0 @@
-{
-    "functions": {
-        "./src/lib/util/markdown.js": {
-            "includeFiles": "./static/stories/**"
-        }
-    }
-}
