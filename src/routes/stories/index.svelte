@@ -1,10 +1,19 @@
 <script context="module">
-	export async function load({ fetch }) {
-		const res = await fetch('api/stories');
-		const stories = await res.json();
+	import { client } from '$lib/gql/client';
+	import { storiesQuery } from '$lib/gql/query';
+	export async function load({}) {
+		const { stories } = await client.request(storiesQuery);
+		const sorted = stories.sort((a, b) => {
+			const dateA = parseDate(a.date);
+			const dateB = parseDate(b.date);
+			if (dateA.year === dateB.year) {
+				return parseInt(dateB.month) - parseInt(dateA.month);
+			}
+			return parseInt(dateB.year) - parseInt(dateA.year);
+		});
 		return {
 			props: {
-				stories
+				stories: sorted
 			}
 		};
 	}
@@ -13,7 +22,7 @@
 <script>
 	import StoryCard from '$lib/components/story_card.svelte';
 	import { searchTerm, showSearch } from '$lib/store';
-	import { filterByArr } from '$lib/util/helper';
+	import { filterByArr, parseDate } from '$lib/util/helper';
 	import { onDestroy, onMount } from 'svelte';
 	export let stories;
 	export let filteredStories;
@@ -22,7 +31,7 @@
 			$searchTerm === ''
 				? stories
 				: stories.filter(
-						(story) => filterByArr([story.metadata.title, story.rawBody, story.metadata.song], $searchTerm)
+						(story) => filterByArr([story.title, story.content], $searchTerm)
 						// story.metadata.title.includes($searchTerm) ||
 						// story.rawBody.includes($searchTerm)
 				  );
@@ -34,12 +43,13 @@
 	onDestroy(() => {
 		showSearch.set(false);
 	});
+	console.log(stories);
 </script>
 
-<header>
+<svelte:head>
 	<title>stories</title>
-</header>
+</svelte:head>
 
-{#each filteredStories as { title, url, preview, metadata }, idx}
-	<StoryCard {title} {url} {preview} {metadata} />
+{#each filteredStories as story, idx}
+	<StoryCard {story} />
 {/each}

@@ -1,9 +1,9 @@
 <script>
-	export let src;
-	export let title;
-	export let artist;
+	// export let src;
+	// export let title;
+	// export let artist;
 
-	let audio;
+	export let audio;
 	let paused = true;
 
 	function stopOthers() {
@@ -11,7 +11,7 @@
 	}
 </script>
 
-<div class="card shadow-md rounded-2xl bg-secondary p-3 md:p-6 mx-auto max-w-md my-3 md:my-10">
+<div class="card shadow-md rounded-2xl bg-secondary p-3 md:p-6 mx-auto max-w-md my-2 md:my-10">
 	<!-- <article class:playing={!paused}> -->
 	<div class="flex flex-row items-center">
 		<div class="avatar">
@@ -22,27 +22,19 @@
 		<div
 			class={`text-center lowercase flex flex-col flex-1 ${paused ? '' : 'text-gray-100 dancing'}`}
 		>
-			<h2 class="font-semibold">{title}</h2>
-			<small class="mt-2 font-semibold">{artist}</small>
+			<h2 class="font-semibold">{audio.title}</h2>
+			<small class="mt-2 font-semibold">{audio.artist}</small>
 		</div>
 	</div>
-	<audio
-		bind:this={audio}
-		bind:paused
-		on:play={stopOthers}
-		controls
-		class="w-full mt-6"
-		src={`http://docs.google.com/uc?export=open&id=${src}`}
-	/>
-	<!-- </article> -->
+	<audio bind:paused on:play={stopOthers} controls class="w-full mt-6" src={audio.src} />
 </div>
 
-<style>
-	/* audio {
-		width: 100%;
-		margin: 2rem 0 0 0;
-	} */
+<div class="text-center">
+	<a href={audio.youtube} target="_blank" class="btn lowercase mb-4 text-white">go to youtube</a>
+</div>
 
+<!-- src={`http://docs.google.com/uc?export=open&id=${audio.src}`} -->
+<style>
 	.rotating {
 		animation: rotate_45 4s infinite;
 	}
@@ -68,13 +60,13 @@
 
 	@keyframes rotate_small {
 		25% {
-			transform: rotate(-2deg);
+			transform: rotate(-4deg);
 		}
 		50% {
 			transform: rotate(0deg);
 		}
 		75% {
-			transform: rotate(2deg);
+			transform: rotate(4deg);
 		}
 		100% {
 			transform: rotate(0deg);

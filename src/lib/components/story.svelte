@@ -2,28 +2,35 @@
 	import { zawgyi } from '$lib/store';
 	import { uni2zg } from '$lib/util/font_converter';
 	import { formatDate } from '$lib/util/helper';
+	import { marked } from 'marked';
 	import AudioPlayer from './audio_player.svelte';
-	export let metadata;
-	export let html;
+
+	export let story;
+	const { title, content, date, audio, coverImage } = story;
+	const body = marked(content).replace(/\n/g, '<br>');
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
 
 <section class="px-4 md:text-xl ">
 	<div class="mb-10 text-center">
-		<h1 class="text-2xl mb-5">{metadata.title}</h1>
+		<h1 class="text-2xl mb-5">{story.title}</h1>
 		<div class="badge badge-accent">
-			{formatDate(metadata.date)}
+			{formatDate(date)}
 		</div>
 	</div>
-	{#if metadata.photoUrl}
-		<img class="mb-10" src={metadata.photoUrl} alt={`${metadata.title}`} />
+	{#if coverImage}
+		<img class="mb-10" src={coverImage.url} alt={`${coverImage.url}`} />
 	{/if}
 
-	{#if metadata.audioSrc}
-		<AudioPlayer src={metadata.audioSrc} title={metadata.song} artist={metadata.artist} />
+	{#if audio}
+		<AudioPlayer {audio} />
 	{/if}
 	{#if $zawgyi}
-		{@html uni2zg(html)}
+		{@html uni2zg(body)}
 	{:else}
-		{@html html}
+		{@html body}
 	{/if}
 </section>
