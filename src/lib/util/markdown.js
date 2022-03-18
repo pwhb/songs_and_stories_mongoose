@@ -1,9 +1,9 @@
 
 import fs from "fs"
 import { marked } from "marked"
-import { uni2zg } from "./font_converter"
 
-const STORIES_DIR = "./src/lib/stories"
+// const STORIES_DIR = "stories"
+const STORIES_DIR = "./static/stories"
 
 
 
