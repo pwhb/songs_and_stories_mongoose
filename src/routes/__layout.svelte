@@ -14,7 +14,8 @@
 
 <svelte:head>
 	<meta name="description" content="hello friend, do you like stories?" />
-	  <meta name="og:title" content="songs & strawberries" />
+	<meta name="og:title" content="songs & strawberries" />
+	<meta property="og:image" content="/main.jpg" />
 </svelte:head>
 
 <main class="max-w-4xl mx-auto">

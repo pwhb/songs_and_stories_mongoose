@@ -25,16 +25,18 @@
 	import { filterByArr, parseDate } from '$lib/util/helper';
 	import { onDestroy, onMount } from 'svelte';
 	export let stories;
-	export let filteredStories;
+	let filteredStories;
+
+	showSearch.subscribe((val) => {
+		if (!val) {
+			filteredStories = stories;
+		}
+	});
 	$: {
 		filteredStories =
-			$searchTerm === ''
+			$searchTerm.trim() === ''
 				? stories
-				: stories.filter(
-						(story) => filterByArr([story.title, story.content], $searchTerm)
-						// story.metadata.title.includes($searchTerm) ||
-						// story.rawBody.includes($searchTerm)
-				  );
+				: stories.filter((story) => filterByArr([story.title, story.content], $searchTerm));
 	}
 
 	onMount(() => {
@@ -43,13 +45,14 @@
 	onDestroy(() => {
 		showSearch.set(false);
 	});
-	console.log(stories);
 </script>
 
 <svelte:head>
 	<title>stories</title>
 </svelte:head>
 
-{#each filteredStories as story, idx}
-	<StoryCard {story} />
-{/each}
+<div class="px-4">
+	{#each filteredStories as story, idx}
+		<StoryCard {story} />
+	{/each}
+</div>
