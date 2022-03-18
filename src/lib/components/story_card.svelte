@@ -10,7 +10,7 @@
 <div class="card md:card-side bg-base-100 shadow-xl my-10">
 	<figure>
 		<img
-			class="h-96 bg-slate-200"
+			class="md:h-96 bg-slate-200"
 			src={imageSrc ? imageSrc : '/svg/undraw_reading_time.svg'}
 			alt="Album"
 		/>
@@ -27,9 +27,9 @@
 		{/if}
 
 		{#if audio}
-			<div class="badge badge-lg text-gray-100">
+			<div class="text-info font-semibold mt-10">
 				<a href={audio.youtube} class="lowercase">
-					{audio.title} - {audio.artist}
+					🎵 {audio.title} - {audio.artist} 🎵
 				</a>
 			</div>
 		{/if}
