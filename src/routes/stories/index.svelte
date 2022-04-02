@@ -21,23 +21,12 @@
 
 <script>
 	import StoryCard from '$lib/components/story_card.svelte';
-	import { searchTerm, showSearch } from '$lib/store';
-	import { filterByArr, parseDate } from '$lib/util/helper';
+	import { filteredIndices, showSearch, storiesStore } from '$lib/store';
+	import { parseDate } from '$lib/util/helper';
 	import { onDestroy, onMount } from 'svelte';
 	export let stories;
-	let filteredStories;
 
-	showSearch.subscribe((val) => {
-		if (!val) {
-			filteredStories = stories;
-		}
-	});
-	$: {
-		filteredStories =
-			$searchTerm.trim() === ''
-				? stories
-				: stories.filter((story) => filterByArr([story.title, story.content], $searchTerm));
-	}
+	storiesStore.set(stories);
 
 	onMount(() => {
 		showSearch.set(true);
@@ -52,7 +41,9 @@
 </svelte:head>
 
 <div class="px-4">
-	{#each filteredStories as story, idx}
-		<StoryCard {story} />
+	{#each $storiesStore as story, idx}
+		{#if !$filteredIndices.includes(idx)}
+			<StoryCard {story} />
+		{/if}
 	{/each}
 </div>

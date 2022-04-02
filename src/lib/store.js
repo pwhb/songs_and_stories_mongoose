@@ -8,4 +8,6 @@ export const showSearchBar = writable(false)
 
 export const searchTerm = writable("")
 
-export const stories = writable([])
+export const storiesStore = writable([])
+
+export const filteredIndices = writable([])

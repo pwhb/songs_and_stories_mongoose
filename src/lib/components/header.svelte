@@ -1,5 +1,5 @@
 <script>
-	import { zawgyi, showSearchBar, showSearch } from '$lib/store';
+	import { zawgyi, showSearchBar, showSearch, searchTerm } from '$lib/store';
 
 	import SearchBar from './search_bar.svelte';
 
@@ -120,3 +120,5 @@
 {#if $showSearch && $showSearchBar}
 	<SearchBar />
 {/if}
+
+

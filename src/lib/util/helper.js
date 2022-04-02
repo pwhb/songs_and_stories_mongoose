@@ -37,7 +37,7 @@ export function formatDate(dateString) {
 
 export function filterByArr(filterArr, searchTerm) {
     for (let filter of filterArr) {
-        if (filter.includes(searchTerm))
+        if (filter.toLowerCase().includes(searchTerm.toLowerCase()))
             return true
     }
     return false
