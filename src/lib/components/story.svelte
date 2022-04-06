@@ -10,9 +10,9 @@
 	const body = marked(content).replace(/\n/g, '<br>');
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
 	<title>{title}</title>
-</svelte:head>
+</svelte:head> -->
 
 <section class="px-4 md:text-xl ">
 	<div class="mb-10 text-center">
@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	{#if imageSrc}
-		<img class="mb-10" src={imageSrc} alt={`image for ${title}`} />
+		<img class="mb-10 rounded-md p-1 bg-slate-200 mx-auto shadow-md" src={imageSrc} alt={`image for ${title}`} />
 	{/if}
 
 	{#if audio}

@@ -25,7 +25,7 @@
 		<div class="grid grid-flow-col gap-4">
 			{#each socialLinks as { icon, alt, href }}
 				<a {href} target="_blank">
-					<img src={icon} {alt} class="w-12 p-2 rounded-full bg-gray-100" />
+					<img src={icon} {alt} class="w-8 p-1 md:w-12 md:p-2 rounded-full bg-gray-100" />
 				</a>
 			{/each}
 		</div>

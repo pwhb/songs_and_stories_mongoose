@@ -28,7 +28,7 @@
 
 		{#if audio}
 			<div class="text-info font-semibold mt-10">
-				<a href={audio.youtube} class="lowercase">
+				<a href={audio.youtube} class="lowercase" target="_blank">
 					🎵 {audio.title} - {audio.artist} 🎵
 				</a>
 			</div>

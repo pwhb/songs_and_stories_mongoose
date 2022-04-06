@@ -15,15 +15,20 @@
 
 <script>
 	import Story from '$lib/components/story.svelte';
+	import Meta from '$lib/components/meta.svelte';
 	export let story;
+	const metadata = {
+		title: story.title,
+		description: story.content.slice(0, 255),
+		image: story.imageSrc || '/main.jpg',
+		imageAlt: '',
+		url: ''
+	};
 </script>
 
-<header>
-	<title>{story.title}</title>
-</header>
+<Meta {metadata} />
 
 <Story {story} />
 <div class="text-center">
 	<a href="/stories" class="btn lowercase">back to stories</a>
 </div>
-

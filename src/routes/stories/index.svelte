@@ -20,12 +20,20 @@
 </script>
 
 <script>
+	import Meta from '$lib/components/meta.svelte';
 	import StoryCard from '$lib/components/story_card.svelte';
 	import { filteredIndices, showSearch, storiesStore } from '$lib/store';
 	import { parseDate } from '$lib/util/helper';
 	import { onDestroy, onMount } from 'svelte';
 	export let stories;
 
+	const metadata = {
+		title: 'stories',
+		description: 'hello friend, do you like stories?',
+		image: '/main.jpg',
+		imageAlt: '',
+		url: ''
+	};
 	storiesStore.set(stories);
 
 	onMount(() => {
@@ -36,9 +44,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>stories</title>
-</svelte:head>
+<Meta {metadata} />
 
 <div class="px-4">
 	{#each $storiesStore as story, idx}

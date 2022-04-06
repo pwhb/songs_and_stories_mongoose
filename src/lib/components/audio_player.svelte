@@ -1,8 +1,4 @@
 <script>
-	// export let src;
-	// export let title;
-	// export let artist;
-
 	export let audio;
 	let paused = true;
 
