@@ -8,7 +8,7 @@
 		{
 			alt: 'trakt.tv',
 			icon: 'https://www.svgrepo.com/show/306870/trakt.svg',
-			href: 'https://trakt.tv/users/broccolipwhgoodreads.com/pwhb'
+			href: 'https://trakt.tv/users/broccolipwh'
 		},
 		{
 			alt: 'lichess',
