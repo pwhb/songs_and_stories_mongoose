@@ -19,7 +19,7 @@
 </script>
 
 <footer class="footer footer-center my-16 text-primary-content">
-	<a href="/">songs & strawberries</a>
+	<a href="/">songs & stories</a>
 
 	<div>
 		<div class="grid grid-flow-col gap-4">

@@ -53,7 +53,7 @@
 		</div>
 	</div>
 	<div class="navbar-center">
-		<a class="normal-case text-xl" href="/">songs & strawberries</a>
+		<a class="normal-case text-xl" href="/">songs & stories</a>
 	</div>
 	<div class="navbar-end">
 		{#if $showSearch}
@@ -120,5 +120,3 @@
 {#if $showSearch && $showSearchBar}
 	<SearchBar />
 {/if}
-
-
